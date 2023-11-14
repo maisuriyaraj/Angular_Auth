@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <section id="1st" class="first-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="text-center">
+              <h1 class="hero-text">Login</h1>
+            </div>
+            <form [formGroup]="LogIn" (ngSubmit)="handleSubmit()">
+              <div class="row">
+                <div class="col-lg-12 mt-1">
+                  <label for="email" class="form-label"
+                    >User Email* or Username</label
+                  >
+                  <input
+                    type="email"
+                    [class]="
+                      login.uname.invalid && login.uname.touched
+                        ? 'form-err'
+                        : 'form-input'
+                    "
+                    formControlName="uname"
+                    placeholder="User Email or Username"
+                  />
+                  <span
+                    class="err-msg"
+                    *ngIf="
+                      login.uname && login.uname.invalid && login.uname.touched
+                    "
+                    >Please Enter your username or Email Address.</span
+                  >
+                </div>
+                <div class="col-lg-12 mt-1">
+                  <label for="password" class="form-label"
+                    >User Password*</label
+                  >
+                  <input
+                    type="password"
+                    [class]="
+                      login.pass.invalid && login.pass.touched
+                        ? 'form-err'
+                        : 'form-input'
+                    "
+                    formControlName="pass"
+                    placeholder="Create password"
+                    id="pass"
+                  />
+                  <span
+                    class="err-msg"
+                    *ngIf="
+                      login.pass && login.pass.invalid && login.pass.touched
+                    "
+                    >Password is Required</span
+                  >
+                </div>
+                <div class="col-lg-6 mt-1 d-flex justify-space-around">
+                  <input
+                    type="checkbox"
+                    class="form-check"
+                    (change)="displayPassword()"
+                  />
+                  <label for="password" class="text-light ml-1">{{
+                    passwordText
+                  }}</label>
+                </div>
+                <div class="col-md-12 mt-1">
+                  <button class="btn1" type="submit" [disabled]="LogIn.invalid">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
